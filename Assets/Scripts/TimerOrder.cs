@@ -31,7 +31,6 @@ public class TimerOrder : MonoBehaviour
 
         if (t.TotalSeconds >= 0)
         {
-            Debug.Log(t.Minutes.ToString("00") + ":" + t.Seconds.ToString("00") + " secondes");
 
             timertext.text = t.Minutes.ToString("00") + ":" + t.Seconds.ToString("00") + "" + " secondes";
         }
