@@ -21,6 +21,7 @@ public class Keybind : MonoBehaviour
 
     void Throw()
     {
+        burgerModel.ResetModel();
 
         foreach (GameObject obj in allGameObjects)
         {
