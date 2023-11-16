@@ -1,21 +1,21 @@
 using System;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; // Ajout de l'espace de noms pour gérer les scènes
+using UnityEngine.SceneManagement; // Ajout de l'espace de noms pour gï¿½rer les scï¿½nes
 
 public class TimerGame : MonoBehaviour
 {
     float StartTime = 0;
     public TMP_Text timertext;
 
-    // Ajout d'une référence à l'écran de fin (assurez-vous d'assigner un objet Canvas à cette variable dans l'éditeur Unity)
+    // Ajout d'une rï¿½fï¿½rence ï¿½ l'ï¿½cran de fin (assurez-vous d'assigner un objet Canvas ï¿½ cette variable dans l'ï¿½diteur Unity)
     public GameObject endScreen;
 
     // Start is called before the first frame update
     void Start()
     {
         StartTime = Time.time;
-        // Assurez-vous que l'écran de fin est désactivé au début du jeu
+        // Assurez-vous que l'ï¿½cran de fin est dï¿½sactivï¿½ au dï¿½but du jeu
         if (endScreen != null)
         {
             endScreen.SetActive(false);
@@ -25,7 +25,7 @@ public class TimerGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeSpan t = TimeSpan.FromSeconds(10 - (Time.time - StartTime));
+        TimeSpan t = TimeSpan.FromSeconds(120 - (Time.time - StartTime));
 
 
         timertext.text = t.Minutes.ToString("00") + ":" + t.Seconds.ToString("00") + "" + " secondes";
@@ -37,38 +37,32 @@ public class TimerGame : MonoBehaviour
     {
         if (t <= 0)
         {
-            //Debug.Log("Terminé");
             timertext.text = " Time Out";
 
-            // Arrêter le jeu
+            // Arrï¿½ter le jeu
             StopGame();
         }
         else
         {
-           // Debug.Log("Plus vite !");
         }
     }
 
     void StopGame()
     {
-        // Arrêter le temps dans le jeu
+        // Arrï¿½ter le temps dans le jeu
         Time.timeScale = 0f;
 
-        // Activer l'écran de fin
+        // Activer l'ï¿½cran de fin
         if (endScreen != null)
         {
             endScreen.SetActive(true);
         }
-        else
-        {
-            Debug.LogWarning("L'écran de fin n'est pas assigné à la variable 'endScreen'");
-        }
     }
 
-    // Ajouter une méthode pour redémarrer le jeu (cette méthode peut être appelée depuis un bouton sur l'écran de fin, par exemple)
+    // Ajouter une mï¿½thode pour redï¿½marrer le jeu (cette mï¿½thode peut ï¿½tre appelï¿½e depuis un bouton sur l'ï¿½cran de fin, par exemple)
     public void RestartGame()
     {
-        Time.timeScale = 1f; // Remettre la vitesse du temps à 1 pour redémarrer le jeu
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Recharger la scène actuelle
+        Time.timeScale = 1f; // Remettre la vitesse du temps ï¿½ 1 pour redï¿½marrer le jeu
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Recharger la scï¿½ne actuelle
     }
 }

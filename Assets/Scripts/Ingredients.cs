@@ -13,6 +13,7 @@ public class Keybind : MonoBehaviour
     public GameObject cheesePrefab;
     public List ingr;
     public BurgerModel burgerModel;
+    public Score score;
     private float layer = -3.5f;
     private float zIndex = 0f;
     private bool similarity = true;
@@ -120,9 +121,8 @@ public class Keybind : MonoBehaviour
 
             if(burgerModel.model.Count != ingr.ingredients.Count)
             {
-
+                score.DecreaseScore(25);
                 Validate();
-
             }
             else
             {
@@ -135,6 +135,7 @@ public class Keybind : MonoBehaviour
                     if (burgerModel.model[i] != ingr.ingredients[i])
                     {
                         similarity = false;
+                        score.DecreaseScore(25);
                         Validate();
                         break;
                     }
@@ -147,13 +148,13 @@ public class Keybind : MonoBehaviour
 
                 if(similarity == true)
                 {
+                    score.IncreaseScore(50);
                     Validate();
-
                 }
                 else
                 {
+                    score.DecreaseScore(25);
                     Validate();
-
                 }
             }
         }

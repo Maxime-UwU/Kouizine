@@ -32,23 +32,23 @@ public class Score : MonoBehaviour
         return score;
     }
 
-    void IncreaseScore(int amount)
+    public void IncreaseScore(int amount)
     {
         score += amount;
         UpdateScoreText();
     }
 
-    void DecreaseScore(int amount)
+    public void DecreaseScore(int amount)
     {
         score -= amount;
-        // Assurez-vous que le score ne devient pas négatif
+        // Assurez-vous que le score ne devient pas nï¿½gatif
         score = Mathf.Max(0, score);
         UpdateScoreText();
     }
 
     void UpdateScoreText()
     {
-        // Mettez à jour le texte d'affichage du score
+        // Mettez ï¿½ jour le texte d'affichage du score
         if (scoreText != null)
         {
             scoreText.text = "Score: " + score;

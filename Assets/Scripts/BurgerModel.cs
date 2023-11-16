@@ -26,7 +26,6 @@ public class BurgerModel : MonoBehaviour
     void RandomNumber()
     {
         int randomNumber = Random.Range(1, 9);
-        Debug.Log(randomNumber);
 
         if(randomNumber == 1)
         {
