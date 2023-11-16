@@ -21,13 +21,12 @@ public class Keybind : MonoBehaviour
 
     void Throw()
     {
-        burgerModel.ResetModel();
 
         foreach (GameObject obj in allGameObjects)
         {
             if (obj != null)
             {
-                obj.transform.DOMoveX(-10.0f, 0.3f);
+                obj.transform.DOMoveX(-15.0f, 0.3f);
                 layer = -3.5f;
                 zIndex = 0f;
                 Destroy(obj, 0.5f);
@@ -45,7 +44,7 @@ public class Keybind : MonoBehaviour
         {
             if (obj != null)
             {
-                obj.transform.DOMoveX(10.0f, 0.3f);
+                obj.transform.DOMoveX(15.0f, 0.3f);
                 layer = -3.5f;
                 zIndex = 0f;
                 Destroy(obj, 0.5f);
