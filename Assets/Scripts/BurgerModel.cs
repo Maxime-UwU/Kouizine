@@ -72,7 +72,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(bread);
                 position = position+0.5f;
                 test--;
-                Debug.Log("bread");
 
             }
             if (ingredient == 5)
@@ -83,7 +82,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(breadB);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("breadB");
 
             }
             else if(ingredient == 2)
@@ -93,7 +91,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(steak);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("steak");
 
             }
             else if (ingredient == 3)
@@ -103,7 +100,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(salade);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("salade");
 
             }
             else if (ingredient == 4)
@@ -113,11 +109,9 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(cheese);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("cheese");
 
             }
             
-            Debug.Log("finish create ingredients");
 
         }
     }
@@ -130,10 +124,7 @@ public class BurgerModel : MonoBehaviour
             position = -3f;
             test = 0f;
         }
-        Debug.Log("object destroyed");
-        Debug.Log("start randomNumber");
         RandomNumber();
-        Debug.Log("finish randomNumber");
     }
 
     // Start is called before the first frame update

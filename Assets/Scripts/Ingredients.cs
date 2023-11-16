@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Keybind : MonoBehaviour
 {
@@ -12,31 +13,49 @@ public class Keybind : MonoBehaviour
     public GameObject cheesePrefab;
     public List ingr;
     public BurgerModel burgerModel;
-    private float layer = -3f;
+    private float layer = -3.5f;
     private float zIndex = 0f;
     private bool similarity = true;
     public List<GameObject> allGameObjects = new List<GameObject>();
 
 
-    void ResetIngredients()
+    void Throw()
     {
-        Debug.Log("start resetModel");
         burgerModel.ResetModel();
-        Debug.Log("finish resetModel");
 
         foreach (GameObject obj in allGameObjects)
         {
-            Destroy(obj);
-            layer = -3f;
-            zIndex = 0f;
+            if (obj != null)
+            {
+                obj.transform.DOMoveX(-10.0f, 0.3f);
+                layer = -3.5f;
+                zIndex = 0f;
+                Destroy(obj, 0.5f);
+            }
         }
-        Debug.Log("added ingredients destroyed");
-
-
         ingr.ingredients.Clear();
-        Debug.Log("list cleared");
 
     }
+
+    void Validate()
+    {
+        burgerModel.ResetModel();
+
+        foreach (GameObject obj in allGameObjects)
+        {
+            if (obj != null)
+            {
+                obj.transform.DOMoveX(10.0f, 0.3f);
+                layer = -3.5f;
+                zIndex = 0f;
+                Destroy(obj, 0.5f);
+            }
+        }
+        ingr.ingredients.Clear();
+
+    }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -94,14 +113,7 @@ public class Keybind : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            foreach (GameObject obj in allGameObjects)
-            {
-                Destroy(obj, 3F);
-                layer = -3f;
-                zIndex = 0f;
-            }
-
-            ingr.ingredients.Clear();
+            Throw();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -110,8 +122,7 @@ public class Keybind : MonoBehaviour
             if(burgerModel.model.Count != ingr.ingredients.Count)
             {
 
-                Debug.Log("different");
-                ResetIngredients();
+                Validate();
 
             }
             else
@@ -125,7 +136,7 @@ public class Keybind : MonoBehaviour
                     if (burgerModel.model[i] != ingr.ingredients[i])
                     {
                         similarity = false;
-                        ResetIngredients();
+                        Validate();
                         break;
                     }
                     else
@@ -137,14 +148,12 @@ public class Keybind : MonoBehaviour
 
                 if(similarity == true)
                 {
-                    Debug.Log("pass");
-                    ResetIngredients();
+                    Validate();
 
                 }
                 else
                 {
-                    Debug.Log("fuck");
-                    ResetIngredients();
+                    Validate();
 
                 }
             }
