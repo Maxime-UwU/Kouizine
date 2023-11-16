@@ -19,13 +19,14 @@ public class BurgerModel : MonoBehaviour
     public List<int> burger6 = new List<int>();
     public List<int> burger7 = new List<int>();
     public List<int> burger8 = new List<int>();
+    public List<int> burger9 = new List<int>();
     public List<int> model;
     public List<GameObject> modelGameObjects = new List<GameObject>();
 
 
     void RandomNumber()
     {
-        int randomNumber = Random.Range(1, 9);
+        int randomNumber = Random.Range(1, 10);
         Debug.Log(randomNumber);
 
         if(randomNumber == 1)
@@ -60,6 +61,10 @@ public class BurgerModel : MonoBehaviour
         {
             model = burger8;
         }
+        else if (randomNumber == 9)
+        {
+            model = burger9;
+        }
 
 
         foreach (int ingredient in model)
@@ -72,7 +77,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(bread);
                 position = position+0.5f;
                 test--;
-                Debug.Log("bread");
 
             }
             if (ingredient == 5)
@@ -83,7 +87,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(breadB);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("breadB");
 
             }
             else if(ingredient == 2)
@@ -93,7 +96,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(steak);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("steak");
 
             }
             else if (ingredient == 3)
@@ -103,7 +105,6 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(salade);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("salade");
 
             }
             else if (ingredient == 4)
@@ -113,11 +114,9 @@ public class BurgerModel : MonoBehaviour
                 modelGameObjects.Add(cheese);
                 position = position + 0.5f;
                 test--;
-                Debug.Log("cheese");
 
             }
             
-            Debug.Log("finish create ingredients");
 
         }
     }
@@ -130,10 +129,7 @@ public class BurgerModel : MonoBehaviour
             position = -3f;
             test = 0f;
         }
-        Debug.Log("object destroyed");
-        Debug.Log("start randomNumber");
         RandomNumber();
-        Debug.Log("finish randomNumber");
     }
 
     // Start is called before the first frame update
@@ -197,6 +193,15 @@ public class BurgerModel : MonoBehaviour
         burger8.Add(3);
         burger8.Add(2);
         burger8.Add(1);
+
+        burger9.Add(5);
+        burger9.Add(4);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(1);
 
         RandomNumber();
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Keybind : MonoBehaviour
 {
@@ -12,31 +13,48 @@ public class Keybind : MonoBehaviour
     public GameObject cheesePrefab;
     public List ingr;
     public BurgerModel burgerModel;
-    private float layer = -3f;
+    private float layer = -3.5f;
     private float zIndex = 0f;
     private bool similarity = true;
     public List<GameObject> allGameObjects = new List<GameObject>();
 
 
-    void ResetIngredients()
+    void Throw()
     {
-        Debug.Log("start resetModel");
-        burgerModel.ResetModel();
-        Debug.Log("finish resetModel");
 
         foreach (GameObject obj in allGameObjects)
         {
-            Destroy(obj);
-            layer = -3f;
-            zIndex = 0f;
+            if (obj != null)
+            {
+                obj.transform.DOMoveX(-10.0f, 0.3f);
+                layer = -3.5f;
+                zIndex = 0f;
+                Destroy(obj, 0.5f);
+            }
         }
-        Debug.Log("added ingredients destroyed");
-
-
         ingr.ingredients.Clear();
-        Debug.Log("list cleared");
 
     }
+
+    void Validate()
+    {
+        burgerModel.ResetModel();
+
+        foreach (GameObject obj in allGameObjects)
+        {
+            if (obj != null)
+            {
+                obj.transform.DOMoveX(10.0f, 0.3f);
+                layer = -3.5f;
+                zIndex = 0f;
+                Destroy(obj, 0.5f);
+            }
+        }
+        ingr.ingredients.Clear();
+
+    }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +65,7 @@ public class Keybind : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             ingr.ingredients.Add(1);
             zIndex--;
@@ -56,7 +74,7 @@ public class Keybind : MonoBehaviour
             bread.transform.position = new Vector3(0, layer, zIndex);
             allGameObjects.Add(bread);
         }
-        else if (Input.GetKeyDown(KeyCode.T))
+        else if (Input.GetKeyDown(KeyCode.Q))
         {
             ingr.ingredients.Add(5);
             zIndex--;
@@ -83,7 +101,7 @@ public class Keybind : MonoBehaviour
             salade.transform.position = new Vector3(0, layer, zIndex);
             allGameObjects.Add(salade);
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.O))
         {
             ingr.ingredients.Add(4);
             zIndex--;
@@ -94,14 +112,7 @@ public class Keybind : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            foreach (GameObject obj in allGameObjects)
-            {
-                Destroy(obj, 3F);
-                layer = -3f;
-                zIndex = 0f;
-            }
-
-            ingr.ingredients.Clear();
+            Throw();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -110,8 +121,7 @@ public class Keybind : MonoBehaviour
             if(burgerModel.model.Count != ingr.ingredients.Count)
             {
 
-                Debug.Log("different");
-                ResetIngredients();
+                Validate();
 
             }
             else
@@ -125,7 +135,7 @@ public class Keybind : MonoBehaviour
                     if (burgerModel.model[i] != ingr.ingredients[i])
                     {
                         similarity = false;
-                        ResetIngredients();
+                        Validate();
                         break;
                     }
                     else
@@ -137,14 +147,12 @@ public class Keybind : MonoBehaviour
 
                 if(similarity == true)
                 {
-                    Debug.Log("pass");
-                    ResetIngredients();
+                    Validate();
 
                 }
                 else
                 {
-                    Debug.Log("fuck");
-                    ResetIngredients();
+                    Validate();
 
                 }
             }
