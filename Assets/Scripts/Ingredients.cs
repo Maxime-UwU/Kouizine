@@ -66,7 +66,7 @@ public class Keybind : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             ingr.ingredients.Add(1);
             zIndex--;
@@ -75,7 +75,7 @@ public class Keybind : MonoBehaviour
             bread.transform.position = new Vector3(0, layer, zIndex);
             allGameObjects.Add(bread);
         }
-        else if (Input.GetKeyDown(KeyCode.T))
+        else if (Input.GetKeyDown(KeyCode.Q))
         {
             ingr.ingredients.Add(5);
             zIndex--;
@@ -102,7 +102,7 @@ public class Keybind : MonoBehaviour
             salade.transform.position = new Vector3(0, layer, zIndex);
             allGameObjects.Add(salade);
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.O))
         {
             ingr.ingredients.Add(4);
             zIndex--;
