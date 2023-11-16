@@ -19,13 +19,14 @@ public class BurgerModel : MonoBehaviour
     public List<int> burger6 = new List<int>();
     public List<int> burger7 = new List<int>();
     public List<int> burger8 = new List<int>();
+    public List<int> burger9 = new List<int>();
     public List<int> model;
     public List<GameObject> modelGameObjects = new List<GameObject>();
 
 
     void RandomNumber()
     {
-        int randomNumber = Random.Range(1, 9);
+        int randomNumber = Random.Range(1, 10);
         Debug.Log(randomNumber);
 
         if(randomNumber == 1)
@@ -59,6 +60,10 @@ public class BurgerModel : MonoBehaviour
         else if (randomNumber == 8)
         {
             model = burger8;
+        }
+        else if (randomNumber == 9)
+        {
+            model = burger9;
         }
 
 
@@ -188,6 +193,15 @@ public class BurgerModel : MonoBehaviour
         burger8.Add(3);
         burger8.Add(2);
         burger8.Add(1);
+
+        burger9.Add(5);
+        burger9.Add(4);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(3);
+        burger9.Add(1);
 
         RandomNumber();
     }
