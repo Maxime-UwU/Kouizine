@@ -16,7 +16,11 @@ public class TimerOrder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         TimeSpan t = TimeSpan.FromSeconds(10 - (Time.time - StartTime));
+=======
+        TimeSpan t = TimeSpan.FromSeconds(21 - (Time.time - StartTime));
+>>>>>>> Stashed changes
 
         if (Input.GetKeyDown(KeyCode.Return) && (t.TotalSeconds > 0))  // KeyCode.Return corresponds to the "Enter" key
         {
