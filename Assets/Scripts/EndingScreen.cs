@@ -16,7 +16,6 @@ public class EndingScreen : MonoBehaviour
     {
         // Appeler la m�thode GetScore() du script Score pour r�cup�rer le score
         int currentScore = scoreScript.GetScore();
-
         // Faites quelque chose avec la valeur du score, par exemple, l'afficher
 
         scoreText.text = "Score: " + currentScore;
