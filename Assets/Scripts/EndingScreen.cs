@@ -20,5 +20,13 @@ public class EndingScreen : MonoBehaviour
 
         scoreText.text = "Score: " + currentScore;
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+
+        }
+    }
 }
 
