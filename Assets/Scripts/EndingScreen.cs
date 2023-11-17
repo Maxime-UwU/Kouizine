@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -25,7 +26,8 @@ public class EndingScreen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
